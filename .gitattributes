@@ -1,0 +1,40 @@
+# Normalize line endings so Windows, macOS, and Linux checkouts agree.
+# Text files are stored in the repository with LF and checked out per platform.
+* text=auto eol=lf
+
+# Windows scripts and batch entrypoints must keep CRLF or cmd.exe misparses them.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Build metadata and lockfiles stay LF and are never merged by content.
+package-lock.json text eol=lf merge=binary linguist-generated=true
+
+# Binaries: never diffed, never line-ending converted.
+*.ico binary
+*.icns binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.svg text eol=lf
+*.mp4 binary
+*.webm binary
+*.mkv binary
+*.mov binary
+*.mp3 binary
+*.wav binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.aar binary
+*.jar binary
+*.apk binary
+*.aab binary
+*.keystore binary
+*.jks binary

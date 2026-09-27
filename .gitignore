@@ -1,0 +1,235 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Contor — repository ignore policy
+#
+# Everything below is intentionally untracked. The tracked tree contains only
+# source code, build configuration, and the public README. Local fixtures,
+# provider test material, internal planning documents, and every kind of secret
+# stay on the machine that produced them.
+#
+# Rule of thumb: if a file is generated, downloaded, licensed, secret, or only
+# useful to the machine that created it, it belongs in this file.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Dependencies & package-manager state ─────────────────────────────────────
+node_modules/
+.pnpm-store/
+.yarn/
+.yarn/cache/
+.yarn/install-state.gz
+.npm/
+.pnp.*
+vendor/
+bun.lockb
+
+# ── Build output & caches ────────────────────────────────────────────────────
+dist/
+build/
+out/
+output/
+release/
+.cache/
+.turbo/
+.parcel-cache/
+.vite/
+.terser-cache/
+*.tsbuildinfo
+*.tsbuildinfo.*
+*.map.lock
+*.tsbuildinfo.lock
+
+# ── Environment, configuration & secrets ─────────────────────────────────────
+# Every .env variant is secret-bearing; only the documented template is tracked.
+.env
+.env.*
+.envrc
+.direnv/
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets.json
+secrets.*.json
+service-account*.json
+google-services.json
+GoogleService-Info.plist
+secrets.plist
+.netrc
+.npmrc.local
+credentials.json
+auth.json
+
+# ── Tests, fixtures & test-media ─────────────────────────────────────────────
+# Contract tests, e2e specs, and media fixtures are local-only by policy:
+# the PRD requires licensed provider fixtures and account-bound credentials,
+# none of which may ever be committed (docs/upgrade.md §15.1).
+test/
+tests/
+__tests__/
+__mocks__/
+e2e/
+cypress/
+playwright-report/
+blob-report/
+test-results/
+.vitest/
+coverage/
+.nyc_output/
+*.test.js
+*.test.jsx
+*.test.ts
+*.test.tsx
+*.test.mjs
+*.test.cjs
+*.spec.js
+*.spec.jsx
+*.spec.ts
+*.spec.tsx
+*.spec.mjs
+*.spec.cjs
+test-*.js
+test-*.ts
+test_*.py
+*_test.py
+*_test.go
+test-*.mp4
+test-*.webm
+test-*.mkv
+test-*.mov
+test-*.m4v
+test-*.m3u8
+test-*.mpd
+test-*.srt
+test-*.vtt
+test-*.wav
+test-*.mp3
+test-*.opus
+fixtures/
+__fixtures__/
+mock-data/
+*.har
+*.snap
+*.log.nip
+
+# ── Internal documentation & planning ────────────────────────────────────────
+# Requirement documents, review notes, and release plans are internal. The
+# public contract lives in README.md, which stays tracked.
+docs/
+doc/
+documentation/
+design-notes/
+adr/
+notes/
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.pdf
+*.md.bak
+
+# ── Design & evidence working files ──────────────────────────────────────────
+# NOTE: `images/` is deliberately NOT ignored. Vite serves it as publicDir
+# (apps/web-react/vite.config.ts), so contor_logo.svg and the favicons it
+# backs are runtime app assets, not scratch design exports.
+screenshots/
+screencasts/
+evidence/
+recordings/
+*.psd
+*.ai
+*.sketch
+*.fig
+*.afdesign
+*.afphoto
+*.blend
+*.psb
+
+# ── Logs & diagnostics ───────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.pid
+*.seed
+*.pid.lock
+*.tsbuildinfo.d
+lsof*
+.stackdump
+crash*.log
+
+# ── Electron / desktop build artifacts ───────────────────────────────────────
+apps/desktop-electron/release/
+apps/desktop-electron/out/
+apps/desktop-electron/.vite/
+*.blockmap
+*.asar
+*.exe.blockmap
+electron-builder.yml.local
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+*.snap
+
+# ── Expo / React Native (Android + iOS) ─────────────────────────────────────
+.expo/
+.expo-shared/
+apps/mobile-native/android/
+apps/mobile-native/ios/
+apps/mobile-native/.expo/
+*.jks
+*.keystore
+*.p8
+*.p12
+*.mobileprovision
+*.orig.*
+web-build/
+*.apk
+*.aab
+*.ipa
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+
+# ── Editor & OS noise ────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*.swn
+*~
+.idea/
+.vscode/
+!.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+.project
+.settings/
+.classpath
+.c9/
+*.launch
+.history/
+
+# ── Miscellaneous local state ────────────────────────────────────────────────
+*.local
+*.temp
+*.tmp
+*.bak
+*.orig
+npm-debug.log
+yarn-error.log
+.todo
